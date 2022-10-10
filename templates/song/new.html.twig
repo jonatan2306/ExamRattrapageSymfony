@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle musique{% endblock %}
+
+{% block main_class %}music-form{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="page-title">Ajouter musique</h2>
+                    </div>
+                    {{ form_start(form) }}
+                        <div class="col-12 mb-3">
+                            <label for="title" class="form-label">Titre de la musique</label>
+                            {{ form_widget(form.name) }}
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="duration" class="form-label">Durée</label>
+                            {{ form_widget(form.duration) }}
+                        </div>
+                    <div class="col-12 d-flex justify-content-end pt-5">
+                        {{ form_widget(form.submit) }}
+
+                    </div>
+
+                    {{ form_end(form) }}
+                    <div class="col-12 d-flex justify-content-end pt-5">
+                        <a href="{{ path('app_song') }}" class="btn solid-btn danger ms-3">annuler</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block Name %}Accueil{% endblock %}
+
+{% block main %}
+    <h1 class="text-center m-3"> Bienvenue sur Spotifake</h1>
+        <div class="m-3">
+        <h5>Les derniers albums sorties</h5>
+    </div>
+
+    {% for album in albums %}
+        <div class="col-12 mb-3 container">
+            <a href="{{ path('app_detail_album', {'id' : album.id }) }}" class="album-card bordered">
+                <h2 class="album-title">{{ album.name }}</h2>
+            </a>
+        </div>
+    {% endfor %}
+
+    <div class="m-3">
+        <h5>Les dernières musiques sorties</h5>
+    </div>
+
+    {% for song in songs %}
+        <div class="col-12 mb-3 container">
+            <a href="{{ path('app_detail_song', {'id' : song.id }) }}" class="song-card bordered">
+                <h2 class="song-title">{{ song.name }}</h2>
+            </a>
+        </div>
+    {% endfor %}
+
+    <div class="m-3">
+        <h5>Le top des musiques les plus longues</h5>
+    </div>
+<div class="d-flex justify-content-center container flex-wrap">
+    {% for top in topDuration %}
+        <div class="col-12 col-md-6 col-lg-3 m-3">
+            <a href="{{ path('app_detail_song', {'id' : top.id }) }}" class="artist-card bordered">
+                <div class="d-flex flex-column">
+                    <p class="artist-lastname">{{ top.name }}</p>
+                    <p class="artist-firstname">{{ top.duration }}</p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

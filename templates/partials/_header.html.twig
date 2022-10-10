@@ -1,0 +1,33 @@
+<header class="main-header">
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarToggler">
+                <a class="navbar-brand m-0" href="{{ path('app_home') }}">Spotifake</a>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.request.get('_route') == 'app_song' ? 'active' : "" }}" aria-current="page" href="{{ path('app_song') }}">Les Musiques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.request.get('_route') == 'app_contact' ? 'active' : "" }}" aria-current="page" href="{{ path('app_contact') }}">Contact</a>
+                    </li>
+
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('app_logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link {{ app.request.get('_route') == 'app_register' ? 'active' : "" }}" aria-current="page" href="{{ path('app_register') }}">S'inscrire</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ app.request.get('_route') == 'app_login' ? 'active' : "" }}" aria-current="page" href="{{ path('app_login') }}"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,24 @@
+.music-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem;
+    text-decoration: unset;
+
+    .music-title {
+        font-size: 1.5rem;
+        margin: 0;
+        font-weight: normal;
+    }
+
+    .music-author,
+    .music-category {
+        font-size: 0.8rem;
+    }
+
+    &:hover {
+        background-color: var(--white-text-color);
+        color: var(--main-color);
+    }
+}

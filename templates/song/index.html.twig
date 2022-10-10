@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Musiques{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="container mt-5">
+            {{ form_start(searchTitle) }}
+            {{ form_widget(searchTitle.songTitle) }}
+            {{ form_widget(searchTitle.submit) }}
+            {{ form_end(searchTitle) }}
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9">
+                <div class="row">
+                    <div class="container d-flex justify-content-center">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-light m-3 w-75" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+                        <p>Les musiques</p>
+                        <a href="{{ path('app_new_song') }}" class="text-decoration-underline"><i class="fa-solid fa-plus"></i> Ajouter une musique</a>
+                    </div>
+                    {% for song in songs %}
+                        <div class="col-12 mb-3">
+                            <a href="{{ path('app_detail_song', {'id' : song.id }) }}" class="song-card bordered">
+                                <h2 class="song-title">{{ song.title }}</h2>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

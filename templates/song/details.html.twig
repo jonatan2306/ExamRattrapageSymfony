@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails musique{% endblock %}
+
+{% block main_class %}song-details d-flex flex-column justify-content-center align-items-center{% endblock %}
+
+{% block main %}
+    <i class="fa-solid fa-song"></i>
+    <table>
+        <thead>
+        <tr>
+            <td colspan="2"><h2 class="song-title">{{ song.name }}</h2></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Durée :</td>
+            <td class="text-end">{{ song.duration }}</td>
+        </tr>
+        {% if is_granted('ROLE_ADMIN') %}
+            <tr>
+                <td colspan="2">
+                    <a href="{{ path('app_edit_song', { 'id' : song.id }) }}" class="btn outline-btn w-100">ÉDITER</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {{ include('song/delete.html.twig') }}
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
+
